@@ -11,7 +11,6 @@ const fetchDataCall = async ({ api }) => {
 const ShowPage = () => {
   const params = useParams();
   const [show, setShow] = useState([]);
-  const [readMore, setReadMore] = useState(false);
   let tvShow = show.tvShow;
   useEffect(() => {
     // funcion callback que utiliza la funcion declara fuera para hacer el request
@@ -29,29 +28,24 @@ const ShowPage = () => {
   console.log(show);
   if (show.length !== 0) {
     return (
-      <div className="bg-madder w-2/4 h-[40rem] phone-sm:max-sm:h-[55rem] phone-sm:max-sm:my-10  phone-sm:max-sm:w-[90%] phone-sm:max-sm:flex-col sm:max-lg:w-[90%] lg:max-xl:w-[90%] container flex flex-row mx-auto mt-36 shadow-xl">
+      <div className="bg-madder w-2/4 h-[40rem]  phone-sm:max-sm:h-[55rem] phone-sm:max-sm:my-10  phone-sm:max-sm:w-[90%] phone-sm:max-sm:flex-col sm:max-lg:w-[90%] lg:max-xl:w-[90%] container flex flex-row mx-auto mt-36 shadow-xl">
         <div
           style={{
             backgroundImage: `url(${tvShow.image_thumbnail_path})`,
           }}
-          className="w-1/2 phone-sm:max-sm:w-full phone-sm:max-sm:h-[50%]   drop-shadow-lg bg-white h-full bg-cover bg-center"
+          className="w-2/6  sm:max-xl:w-3/6 phone-sm:max-sm:w-full phone-sm:max-sm:h-[50%] xl:w-3/6  drop-shadow-lg bg-white h-full bg-cover bg-center"
         ></div>
-        <div className="text-2xl font-bold  text-white phone-sm:max-sm:h-[50%] phone-sm:max-sm:w-full p-8 w-1/2 my-auto">
+        <div className="text-2xl font-bold  text-white phone-sm:max-sm:h-4/6 phone-sm:max-sm:w-full xl:w-5/6 sm:max-xl:w-5/6 p-8 w-1/2 my-auto">
           <div className="border-b-2 border-white">
             <p className="tracking-wider text-yellow-500">{tvShow.name}</p>
             <p
-              className={`text-xs font-normal  ${
-                readMore ? "h-auto" : " h-32"
-              } scroll-smooth ho overflow-hidden`}
+              className={`text-xs font-normal  
+               h-auto
+               scroll-smooth ho overflow-hidden my-2`}
             >
               {tvShow.description}
             </p>
-            <p
-              onClick={() => setReadMore(!readMore)}
-              className="text-xs hover:text-red-400 my-2 cursor-pointer"
-            >
-              Read more...
-            </p>
+        
           </div>
           <div className="border-b-2 border-white">
             <p className="text-sm tracking-wider">Genres</p>
